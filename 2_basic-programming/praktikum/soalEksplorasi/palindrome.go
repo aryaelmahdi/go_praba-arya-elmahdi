@@ -9,7 +9,7 @@ func main(){
 	fmt.Scanln(&input)
 
 	for i:= (len(input)-1) ; i>=0 ; i-- {
-		if i == len(input) {
+		if i == (len(input)-1) {
 			arrange = string(input[i])
 		}else {
 			arrange = arrange + string(input[i])
