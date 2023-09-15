@@ -28,4 +28,4 @@ echo "With host: $(uname -a)" >> "$folder_name/my_system_info/about_this_laptop.
 
 ping -c 3 google.com > "$folder_name/my_system_info/internet_connection.txt"
 
-tree "$folder_name"
+cmd //c tree
