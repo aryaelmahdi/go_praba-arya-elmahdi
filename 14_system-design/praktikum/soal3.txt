@@ -1,0 +1,7 @@
+SQL 	: SELECT * FROM users;
+
+redis 	: SCAN MATCH customer:1
+
+neo4j 	: MATCH (u:User) RETURN u
+
+cassandra : SELECT * FROM users;
