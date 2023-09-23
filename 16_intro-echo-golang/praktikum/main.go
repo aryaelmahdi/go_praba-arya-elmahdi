@@ -8,10 +8,10 @@ import (
 )
 
 type User struct {
-	Id       int    `json:"id" form:"id"`
-	Name     string `json:"name" form:"name"`
-	Email    string `json:"email" form:"email"`
-	Password string `json:"password" form:"password"`
+	Id       int    `json:"id" form:"id" gorm:"primaryKey;type:int(10) AUTO_INCREMENT"`
+	Name     string `json:"name" form:"name" gorm:"type:varchar(20)"`
+	Email    string `json:"email" form:"email" gorm:"type:varchar(50)"`
+	Password string `json:"password" form:"password" gorm:"type:varchar(20)"`
 }
 
 var users []User
