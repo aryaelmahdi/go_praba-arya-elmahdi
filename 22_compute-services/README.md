@@ -1,4 +1,4 @@
-# Docker
+# Compute Services
 
 1. Docker adalah platform yang digunakan untuk mengembangkan, menguji, dan menjalankan aplikasi dalam unit pemaketan yang disebut "kontainer." Kontainer ini berisi semua yang dibutuhkan untuk menjalankan sebuah aplikasi, termasuk kode, runtime, pustaka, dan dependensi. Docker memungkinkan pengemasan, distribusi, dan pengoperasian aplikasi yang konsisten dan portabel di berbagai lingkungan komputasi, seperti server fisik, mesin virtual, atau di lingkungan komputasi awan.
 
