@@ -1,63 +1,47 @@
-- Untuk menghandle API dari Midtrans dalam bahasa Go, Anda perlu menggunakan Midtrans Go Library. Pertama, pastikan Anda telah menginstal Midtrans Go Library dengan perintah berikut:
+Sure! Here's an example of how you can create a RESTful API with an OpenAPI connection in Golang using the popular Gorilla Mux router and swaggo for generating the OpenAPI specification.
 
-- go get github.com/midtrans/midtrans-go
+First, make sure you have Go installed on your system.
 
-- code 
-package main
+Step 1: Set up the project structure
+
+Create a new folder for your project and navigate into it. Then, create the following folders inside it:
+
+```
+- cmd
+- internal
+- pkg
+- api
+- docs
+```
+
+Step 2: Install the necessary packages
+
+In your project folder, open a terminal and run the following command to install the Gorilla Mux router:
+
+```bash
+go get -u github.com/gorilla/mux
+```
+
+Next, install swaggo for generating the OpenAPI specification:
+
+```bash
+go get -u github.com/swaggo/swag/cmd/swag
+```
+
+Step 3: Set up the API
+
+Inside the `api` folder, create a file `user.go` with the following content:
+
+```go
+package api
 
 import (
-	"fmt"
-	"github.com/midtrans/midtrans-go"
-	"github.com/midtrans/midtrans-go/coreapi"
+	"encoding/json"
+	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
-func main() {
-	// Setup konfigurasi Midtrans
-	clientKey := "your-client-key"
-	serverKey := "your-server-key"
-
-	midclient := midtrans.NewClient()
-	midclient.ServerKey = serverKey
-	midclient.ClientKey = clientKey
-	midclient.APIEnvType = midtrans.Sandbox
-
-	// Inisialisasi charge request
-	chargeReq := &coreapi.ChargeReq{
-		PaymentType: coreapi.PaymentTypeCreditCard,
-		TransactionDetails: midtrans.TransactionDetails{
-			OrderID:  "order-123",
-			GrossAmt: 200000, // Jumlah total pembayaran dalam rupiah
-		},
-		CreditCard: &coreapi.CreditCardDetail{
-			TokenID: "your-credit-card-token",
-		},
-		CustomerDetails: midtrans.CustomerDetails{
-			FirstName: "John",
-			LastName:  "Doe",
-			Email:     "johndoe@example.com",
-			Phone:     "081234567890",
-		},
-	}
-
-	// Membuat charge (pembayaran)
-	chargeResp, err := coreapi.ChargeTransaction(chargeReq, midclient)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	// Mendapatkan hasil pembayaran
-	fmt.Println("Payment Status:", chargeResp.StatusMessage)
-	fmt.Println("Payment ID:", chargeResp.TransactionID)
-}
-
-
-- Berikut adalah penjelasan rinci kode di atas:
-
-1. Impor pustaka Midtrans dan pustaka yang diperlukan.
-2. Atur konfigurasi dengan menggantikan "your-client-key" dan "your-server-key" dengan kunci-kunci Anda dari akun Midtrans Anda. Pastikan untuk mengatur midtrans.Sandbox sebagai lingkungan API jika Anda sedang menguji di lingkungan pengembangan.
-3. Inisialisasi permintaan pembayaran (chargeReq) dengan rincian transaksi, jenis pembayaran, dan informasi pelanggan yang relevan. Token kartu kredit digunakan jika Anda ingin melakukan pembayaran kartu kredit.
-4. Panggil fungsi coreapi.ChargeTransaction() untuk membuat pembayaran berdasarkan permintaan Anda.
-5. Periksa status pembayaran dan tampilkan informasi yang relevan.
-
-- Pastikan Anda telah menggantikan nilai-nilai seperti your-client-key, your-server-key, dan your-credit-card-token dengan nilai-nilai yang sesuai dari akun Midtrans Anda. Selain itu, pastikan Anda telah menyesuaikan detail transaksi sesuai dengan kebutuhan Anda.
+type User struct {
+	ID       int    `json:"id"`
+	Username string `

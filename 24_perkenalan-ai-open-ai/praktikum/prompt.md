@@ -1,1 +1,1 @@
-buatkan kode dalam bahsa go untuk handle api dari midtrans dan jelaskan secara rinci kodenya
+make me a rest api with openapi connection in golang
