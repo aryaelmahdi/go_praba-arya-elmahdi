@@ -32,7 +32,7 @@ func (handler *RecommendationModel) GetRecommendation(writer http.ResponseWriter
 		})
 	}
 
-	recommendationMessage := fmt.Sprintf("i need a laptop for %s purpose, what's the best laptops i could buy with budget of : Rp.%d", recommendationRequest.Purpose, recommendationRequest.Budget)
+	recommendationMessage := "i need a laptop for " + recommendationRequest.Purpose + "purpose, what's the best laptops i could buy with budget of : Rp." + fmt.Sprintf("%d", recommendationRequest.Budget)
 	res, err := handler.service.GetRecommendation(recommendationMessage)
 	if err != nil {
 		helper.SetResponse(writer, data.Response{
