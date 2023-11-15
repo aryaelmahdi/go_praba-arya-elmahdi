@@ -27,7 +27,7 @@ jobs:
           context: .
           file: ./dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/go-music-studio:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tugas:latest
       -  
         name: connect ssh
         uses: appleboy/ssh-action@v0.1.9
@@ -40,4 +40,4 @@ jobs:
             docker stop ${{ secrets.CONTAINER_NAME }}
             docker rm ${{ secrets.CONTAINER_NAME }}
             docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/tugas
-            docker run --name ${{ secrets.CONTAINER_NAME }} -p 8080:8080 -d -e SECRET=${{ secrets.SECRET }} -e ProjectID=${{ secrets.PROJECTID }} -e DatabaseURL=${{ secrets.DATABASEURL }} -e GOOCREDS=${{ secrets.GOOCREDS }}/go-music-studio
+            docker run --name ${{ secrets.CONTAINER_NAME }} -p 8080:8080 -d -e SECRET=${{ secrets.SECRET }} -e ProjectID=${{ secrets.PROJECTID }} -e DatabaseURL=${{ secrets.DATABASEURL }} -e GOOCREDS=${{ secrets.GOOCREDS }}/tugas
