@@ -1,6 +1,7 @@
 package database
 
 import (
+	"errors"
 	"tugas/praktikum/model"
 
 	"gorm.io/driver/sqlite"
@@ -8,11 +9,14 @@ import (
 )
 
 func ConnectDB() (*gorm.DB, error) {
-	return gorm.Open(sqlite.Open("app.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("app.db"), &gorm.Config{})
+	if err != nil {
+		return nil, errors.New("cannot connect to database, " + err.Error())
+	}
+	migrateDB(db)
+	return db, nil
 }
 
-func MigrateDB(db *gorm.DB) error {
-	return db.AutoMigrate(
-		model.User{},
-	)
+func migrateDB(db *gorm.DB) {
+	db.AutoMigrate(&model.User{})
 }
