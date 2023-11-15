@@ -1,7 +1,7 @@
-# Middleware
+# Unit Testing
 
-1. Middleware adalah perangkat lunak yang berjalan di antara server web (atau aplikasi web) dan endpoint. Middleware digunakan untuk melakukan berbagai tugas di antara permintaan HTTP yang diterima oleh server dan respons yang dikirimkan kembali ke klien
+1. Unit testing adalah praktik pengujian perangkat lunak yang fokus pada pengujian unit kecil atau komponen individual dari kode sumber.
 
-2. Ada banyak contoh middleware pihak ketiga seperti Negroni, Echo, Interpose, Alice, dan dapat dibuat sendiri. Echo menyediakan middleware seperti JWT, Basic Auth, Proxy, Redirect, CORS, Logger dll.
+2. Tujuan utama unit testing adalah memastikan bahwa setiap unit program berperilaku sesuai dengan spesifikasi yang diharapkan.
 
-3. Echo menyediakan #Pre() dan #Use() yang dimana #Pre() akan di eksekusi sebelum router memproses request, sementara #Use() akan dieksekusi setelah router memproses request dan memiliki akses penuh ke echo.Context API
+3. Dengan menyediakan skenario uji untuk setiap fungsi atau metode, unit testing membantu meningkatkan keamanan, keandalan, dan kualitas keseluruhan dari suatu program.
