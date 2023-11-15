@@ -3,11 +3,11 @@ package controller
 import (
 	"fmt"
 	"net/http"
-	"project/config"
-	"project/helper"
-	mid "project/middleware"
-	"project/model"
 	"strconv"
+	"tugas/praktikum/config"
+	"tugas/praktikum/helper"
+	mid "tugas/praktikum/middleware"
+	"tugas/praktikum/model"
 
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
@@ -40,7 +40,7 @@ func (uc *UserController) Login() echo.HandlerFunc {
 			return c.JSON(http.StatusNotFound, helper.SetResponse("data not found", nil))
 		}
 
-		jwtToken := mid.GenerateJWT(uc.config.Secret, res.Name, fmt.Sprint(res.Id))
+		jwtToken := mid.GenerateJWT(uc.config.SECRET, res.Name, fmt.Sprint(res.Id))
 
 		if jwtToken == nil {
 			return c.JSON(http.StatusInternalServerError, helper.SetResponse("cannot process data", nil))

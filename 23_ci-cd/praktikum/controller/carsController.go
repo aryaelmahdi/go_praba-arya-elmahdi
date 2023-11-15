@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"project/config"
-	"project/helper"
-	"project/model"
+	"tugas/praktikum/config"
+	"tugas/praktikum/helper"
+	"tugas/praktikum/model"
 
 	"github.com/labstack/echo/v4"
 )
