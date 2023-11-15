@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func UsersRoute(e echo.Echo, handler handler.UsersHandlerInterface, secret string) {
+func UsersRoute(e *echo.Echo, handler handler.UsersHandlerInterface, secret string) {
 	e.POST("/users", handler.CreateUser(), echojwt.JWT([]byte(secret)))
 	e.GET("/users", handler.GetAllUsers(), echojwt.JWT([]byte(secret)))
 }
