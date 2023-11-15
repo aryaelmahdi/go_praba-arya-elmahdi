@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./dockerfile
+          file: ./21_ci-cd/praktikum/dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tugas:latest
       -  
