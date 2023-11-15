@@ -6,6 +6,7 @@ import (
 	"tugas/praktikum/controller"
 	"tugas/praktikum/model"
 	"tugas/praktikum/routes"
+	"tugas/praktikum/utils/database"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -15,9 +16,10 @@ func main() {
 	e := echo.New()
 
 	cfg := config.Init()
+	db, client := database.InitFirebaseApp(cfg.SDKPath, cfg.ProjectID, cfg.DatabaseURL)
 
 	userModel := model.UserModel{}
-	userModel.Init(db.Database)
+	userModel.Init(db)
 	userController := controller.UserController{}
 	userController.Init(userModel, *cfg)
 
