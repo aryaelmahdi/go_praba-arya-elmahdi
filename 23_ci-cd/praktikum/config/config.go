@@ -47,5 +47,20 @@ func loadConfig() *Config {
 		res.SECRET = val
 	}
 
+	if val, found := os.LookupEnv("GOOCREDS"); found {
+		jsonBytes := []byte(val)
+
+		file, err := os.Create("credentials.json")
+		if err != nil {
+			panic(err)
+		}
+		defer file.Close()
+
+		_, err = file.Write(jsonBytes)
+		if err != nil {
+			panic(err)
+		}
+	}
+
 	return res
 }
