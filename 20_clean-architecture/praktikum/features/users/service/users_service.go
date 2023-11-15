@@ -13,7 +13,7 @@ func (service *UsersServiceImpl) GetAllUsers() ([]model.User, error) {
 	return result, nil
 }
 
-func (service *UsersServiceImpl) CreateUser(user *model.User) (*model.User, error) {
+func (service *UsersServiceImpl) CreateUser(user model.User) (*model.User, error) {
 	result, err := service.userQuery.CreateUser(user)
 	if err != nil {
 		return nil, errors.New("wrong input")

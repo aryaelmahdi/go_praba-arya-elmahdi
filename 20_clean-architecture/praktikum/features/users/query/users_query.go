@@ -11,10 +11,10 @@ func (usersQuery *UserQueryImpl) GetAllUsers() ([]model.User, error) {
 	return users, nil
 }
 
-func (usersQuery *UserQueryImpl) CreateUser(user *model.User) (*model.User, error) {
+func (usersQuery *UserQueryImpl) CreateUser(user model.User) (*model.User, error) {
 	result := usersQuery.DB.Create(&user)
 	if result.Error != nil {
 		return nil, result.Error
 	}
-	return user, nil
+	return &user, nil
 }

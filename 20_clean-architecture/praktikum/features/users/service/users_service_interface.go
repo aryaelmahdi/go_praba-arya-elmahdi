@@ -7,7 +7,7 @@ import (
 
 type UsersServiceInterface interface {
 	GetAllUsers() ([]model.User, error)
-	CreateUser(user *model.User) (*model.User, error)
+	CreateUser(user model.User) (*model.User, error)
 }
 
 type UsersServiceImpl struct {
